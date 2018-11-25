@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { EosProvider } from '../../providers/eos/eos';
 
 /**
@@ -21,7 +22,8 @@ export class SendPage {
   constructor(public navCtrl: NavController, 
       public navParams: NavParams,
       private eos: EosProvider,
-      private toastCtrl: ToastController) {
+      private toastCtrl: ToastController,
+      private barcodeScanner: BarcodeScanner) {
   }
 
   ionViewDidLoad() {
@@ -50,6 +52,22 @@ export class SendPage {
         });
         toast.present();
       })
+  }
+
+  scan() {
+    this.barcodeScanner.scan().then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+      this.toAccount = barcodeData.text;
+     }).catch(err => {
+         console.log('Error', err);
+         const toast = this.toastCtrl.create({
+          message: 'Scan error.',
+          duration: 3000,
+          position: 'top',
+          cssClass: 'toast-danger'
+        });
+        toast.present();
+     });
   }
 
 }

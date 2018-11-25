@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -40,6 +41,7 @@ import { EosProvider } from '../providers/eos/eos';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EosProvider,
+    BarcodeScanner
   ]
 })
 export class AppModule {}

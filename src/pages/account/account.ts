@@ -16,8 +16,8 @@ import { EosProvider } from '../../providers/eos/eos';
 })
 export class AccountPage {
 
-  account: string;
-  key: string;
+  account: string = "coinconat123";
+  key: string = "5JAKHmi89rsFe2JbD3jV7G75sR4J7S7fHCPiqk3ru3kQvaUWt3k";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private eos: EosProvider) {
   }

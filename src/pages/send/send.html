@@ -17,7 +17,11 @@
   <ion-item>
     <ion-label floating>Account Name</ion-label>
     <ion-input [(ngModel)]="toAccount"  type="text"></ion-input>
-  </ion-item>
+    <button ion-button item-end color="dark" (click)="scan()" icon-start>
+      <ion-icon name="qr-scanner"></ion-icon>
+      Scan
+    </button>
+</ion-item>
   <ion-item>
     <ion-label floating>Value</ion-label>
     <ion-input [(ngModel)]="value"  type="text" ></ion-input>
