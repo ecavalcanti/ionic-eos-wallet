@@ -1,5 +1,8 @@
+Test Net
+
 https://nadejde.github.io/eos-token-sale/
 
+```
 coinconat123
 
 Owner
@@ -51,3 +54,4 @@ Private key	5JQoid3uHKNRPRAHnU877KnDT7o9k7iYKwxA1DjHZ7kyYJSSX5a
 },
 "account": "coinconat223"
 }
+```
