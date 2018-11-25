@@ -1,0 +1,28 @@
+<!--
+  Generated template for the AccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Account</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Name</ion-label>
+    <ion-input [(ngModel)]="account" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Private key</ion-label>
+    <ion-input [(ngModel)]="key" type="text"></ion-input>
+  </ion-item>
+  <div padding>
+    <button (click)="goHome()" ion-button block color="primary">Next</button>
+  </div>
+</ion-content>
