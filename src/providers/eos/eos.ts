@@ -13,6 +13,7 @@ export class EosProvider {
   private eos: any;
   public account: string;
   private key: string;
+  private apiUrl: string = "https://api.coinmarketcap.com/v2/ticker/1765/";
 
   constructor(public http: HttpClient) {
     this.eos = Eos({
@@ -23,6 +24,17 @@ export class EosProvider {
 
   getAccountBalance() {
     return this.eos.getCurrencyBalance('eosio.token', this.account)
+  }
+
+  getEosToUSD(value: number) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl).subscribe(result => {
+        const usdValue = (result["data"].quotes.USD.price * value).toFixed(2);
+        resolve(usdValue);
+      }, err => {
+        console.log(err);
+      });
+    });
   }
 
   setCredentials(account: string, key: string) {
