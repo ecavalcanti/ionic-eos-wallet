@@ -11,6 +11,7 @@ import { ReceivePage } from '../receive/receive';
 export class HomePage {
   balance: string;
   account: string;
+  balanceUSD: string;
 
   constructor(public navCtrl: NavController, private eos: EosProvider, public navParams: NavParams) {
   }
@@ -18,7 +19,14 @@ export class HomePage {
   ionViewWillEnter() {
     this.account = this.eos.account;
     this.eos.getAccountBalance().
-      then(result => this.balance = result[0])
+      then(result => {
+        this.balance = result[0];
+        const eos = this.balance.split(' ')[0].trim();
+
+        this.eos.getEosToUSD(Number.parseFloat(eos))
+          .then(result => this.balanceUSD = `${result.toString()} USD`)
+          .catch(error => alert(error));
+      });
   }
 
   goSend() {
